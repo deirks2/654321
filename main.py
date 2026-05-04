@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-import google.generativeai as genai
+import google.genai as genai
 from dotenv import load_dotenv
 from collections import defaultdict
 
