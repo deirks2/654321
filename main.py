@@ -28,7 +28,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel(
+gemini_model = google.genai(
     model_name="gemini-2.5-flash",
     system_instruction=SYSTEM_PROMPT,
 )
