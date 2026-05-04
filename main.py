@@ -233,8 +233,8 @@ async def on_command_error(ctx, error):
 
 # ─── 실행 ────────────────────────────────────────────
 if __name__ == "__main__":
-    if not DISCORD_TOKEN:MTUwMDgyODI5NTQ0MzUxMzQ0Ng.GaPgOE.GCRFCETGBG3cMhQlHLoO4jKnroJietqypbhTbI
+    if not DISCORD_TOKEN:
         raise ValueError("DISCORD_TOKEN 환경 변수가 설정되지 않았어요!")
-    if not GEMINI_API_KEY:AIzaSyDXoP6cM4cVpiRPKPLTrnbE1k5QkSv_B0U
+    if not GEMINI_API_KEY:
         raise ValueError("GEMINI_API_KEY 환경 변수가 설정되지 않았어요!")
     bot.run(DISCORD_TOKEN)
