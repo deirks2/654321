@@ -57,7 +57,7 @@ async def ask_ai(channel_id: int, user_name: str, prompt: str) -> str:
     response = client.models.generate_content(
         model=MODEL,
         contents=conversation_history[channel_id],
-        config=types.GenerateContentConfig(
+        config=genai.GenerationConfig(
             system_instruction=SYSTEM_PROMPT,
             max_output_tokens=2000,
         ),
