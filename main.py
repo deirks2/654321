@@ -2,7 +2,6 @@ import os
 import discord
 from discord.ext import commands
 import google.generativeai as genai
-from google.generativeai import types
 from dotenv import load_dotenv
 from collections import defaultdict
 
@@ -49,24 +48,29 @@ async def ask_ai(channel_id: int, user_name: str, prompt: str) -> str:
     user_text = f"[{user_name}]: {prompt}"
 
     # 히스토리에 유저 메시지 추가
-    conversation_history[channel_id].append(
-        types.Content(role="user", parts=[types.Part(text=user_text)])
+    conversation_history[channel_id].append({
+    "role": "user",
+    "parts": [{"text": user_text}]
+})
+
     )
     trim_history(channel_id)
 
-    response = client.models.generate_content(
-        model=MODEL,
-        contents=conversation_history[channel_id],
-        config=genai.GenerationConfig(
-            system_instruction=SYSTEM_PROMPT,
-            max_output_tokens=2000,
-        ),
-    )
+   response = genai.GenerativeModel(MODEL).generate_content(
+    contents=conversation_history[channel_id],
+    generation_config=genai.GenerationConfig(
+        system_instruction=SYSTEM_PROMPT,
+        max_output_tokens=2000,
+    ),
+)
+
     reply = response.text
 
     # 히스토리에 모델 응답 추가
-    conversation_history[channel_id].append(
-        types.Content(role="model", parts=[types.Part(text=reply)])
+   conversation_history[channel_id].append({
+    "role": "model",
+    "parts": [{"text": reply}]
+})
     )
     return reply
 
