@@ -53,7 +53,6 @@ async def ask_ai(channel_id: int, user_name: str, prompt: str) -> str:
     "parts": [{"text": user_text}]
 })
 
-    )
     trim_history(channel_id)
 
    response = genai.GenerativeModel(MODEL).generate_content(
