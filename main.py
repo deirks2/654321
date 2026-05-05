@@ -66,7 +66,7 @@ async def ask_ai(channel_id: int, user_name: str, prompt: str) -> str:
     reply = response.text
 
     # 히스토리에 모델 응답 추가
-conversation_history[channel_id].append({
+ conversation_history[channel_id].append({
     "role": "model",
     "parts": [{"text": reply}]
 })
