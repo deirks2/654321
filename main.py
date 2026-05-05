@@ -28,7 +28,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+genai.configure(api_key=GEMINI_API_KEY)
 MODEL  = "gemini-2.0-flash"
 
 # ─── 상태 저장 ───────────────────────────────────────
